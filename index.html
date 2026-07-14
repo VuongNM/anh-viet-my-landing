@@ -54,9 +54,9 @@
   .hero .btn { background: #fff; color: var(--red); }
   .hero .btn:hover { background: #ffe9e9; }
   .hero .hotline-inline { margin-left: 16px; font-weight: 700; color: #fff; text-decoration: none; font-size: 16px; }
-  .stats { display: flex; gap: 36px; margin-top: 36px; flex-wrap: wrap; }
-  .stat b { display: block; font-size: 30px; font-weight: 900; }
-  .stat span { font-size: 14px; color: rgba(255,255,255,.85); }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px 18px; margin-top: 32px; max-width: 460px; }
+  .stat b { display: block; font-size: clamp(26px, 6vw, 32px); font-weight: 900; line-height: 1.1; }
+  .stat span { font-size: 13px; color: rgba(255,255,255,.85); line-height: 1.35; }
   /* Hero 2 cột: giới thiệu | form */
   .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 44px; align-items: center; }
   .hero-intro h1, .hero-intro p { max-width: none; }
