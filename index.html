@@ -54,9 +54,20 @@
   .hero .btn { background: #fff; color: var(--red); }
   .hero .btn:hover { background: #ffe9e9; }
   .hero .hotline-inline { margin-left: 16px; font-weight: 700; color: #fff; text-decoration: none; font-size: 16px; }
-  .stats { display: flex; gap: 36px; margin-top: 44px; flex-wrap: wrap; }
+  .stats { display: flex; gap: 36px; margin-top: 36px; flex-wrap: wrap; }
   .stat b { display: block; font-size: 30px; font-weight: 900; }
   .stat span { font-size: 14px; color: rgba(255,255,255,.85); }
+  /* Hero 2 cột: giới thiệu | form */
+  .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 44px; align-items: center; }
+  .hero-intro h1, .hero-intro p { max-width: none; }
+  .hero-zalo { margin-top: 22px; font-size: 15px; color: rgba(255,255,255,.92); }
+  .hero-zalo a { color: #ffd9a8; font-weight: 700; text-decoration: none; }
+  .hero-zalo a:hover { text-decoration: underline; }
+  .hero-form .form-card { max-width: none; margin: 0; padding: 28px 26px; }
+  .form-head { text-align: center; margin-bottom: 18px; }
+  .form-head h2 { color: var(--red); font-size: 21px; font-weight: 900; text-transform: uppercase; letter-spacing: .3px; }
+  .form-head p { color: var(--gray); font-size: 13.5px; margin-top: 6px; line-height: 1.5; }
+  @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; gap: 30px; } }
 
   /* ===== Sections ===== */
   section { padding: 64px 0; }
@@ -174,17 +185,105 @@
   </div>
 </header>
 
-<div class="hero">
-  <div class="wrap">
-    <span class="kicker">🎓 Khai giảng khóa mới — ưu đãi khi đăng ký sớm</span>
-    <h1>Tiếng Anh vững vàng, <em>tương lai rộng mở</em> cùng Anh Việt Mỹ</h1>
-    <p>Từ mẫu giáo đến người đi làm "mất gốc" — lộ trình học riêng cho từng học viên, với 100% giáo viên đạt chứng chỉ quốc tế TESOL/TEFL và môi trường luyện nói cùng giáo viên bản ngữ.</p>
-    <a class="btn btn-lg" href="#dang-ky">Đăng ký nhận tư vấn miễn phí</a>
-    <a class="hotline-inline" href="https://zalo.me/0869688153" target="_blank" rel="noopener">hoặc nhắn Zalo cho Ms. Uyên</a>
-    <div class="stats">
-      <div class="stat"><b>13+</b><span>năm kinh nghiệm đào tạo</span></div>
-      <div class="stat"><b>100%</b><span>giáo viên chuẩn TESOL/TEFL</span></div>
-      <div class="stat"><b>5</b><span>chi nhánh tại TP.HCM &amp; Bình Dương</span></div>
+<div class="hero" id="dang-ky">
+  <div class="wrap hero-grid">
+    <div class="hero-intro">
+      <span class="kicker">🎓 Khai giảng khóa mới — ưu đãi khi đăng ký sớm</span>
+      <h1>Tiếng Anh vững vàng, <em>tương lai rộng mở</em> cùng Anh Việt Mỹ</h1>
+      <p>Từ mẫu giáo đến người đi làm "mất gốc" — lộ trình học riêng cho từng học viên, với 100% giáo viên đạt chứng chỉ quốc tế TESOL/TEFL và môi trường luyện nói cùng giáo viên bản ngữ.</p>
+      <div class="stats">
+        <div class="stat"><b>13+</b><span>năm kinh nghiệm đào tạo</span></div>
+        <div class="stat"><b>100%</b><span>giáo viên chuẩn TESOL/TEFL</span></div>
+        <div class="stat"><b>5</b><span>chi nhánh tại TP.HCM &amp; Bình Dương</span></div>
+      </div>
+      <p class="hero-zalo">Hoặc nhắn <a href="https://zalo.me/0869688153" target="_blank" rel="noopener">Zalo cho Ms. Uyên</a> để được tư vấn nhanh.</p>
+    </div>
+
+    <div class="hero-form">
+      <!--
+        Form gửi ngầm vào Google Form (chỉ chạy nền — người đăng ký không thấy Google Form):
+        mỗi đăng ký thành một dòng trong Google Sheet của chủ trang.
+        Cấu hình endpoint + entry ID tại GFORM cuối trang.
+      -->
+      <div class="form-card" id="cam-on" style="display:none; text-align:center;">
+        <div style="font-size:48px; margin-bottom:12px;">🎉</div>
+        <h3 style="color:var(--red); font-size:22px; margin-bottom:10px;">Đăng ký thành công!</h3>
+        <p style="color:var(--gray);">Cảm ơn bạn đã tin tưởng Anh Việt Mỹ. Trung tâm sẽ liên hệ với bạn trong vòng 24 giờ.<br>Cần hỗ trợ ngay? Nhắn Zalo <a href="https://zalo.me/0869688153" target="_blank" rel="noopener" style="color:var(--red); font-weight:700;">Ms. Uyên</a>.</p>
+      </div>
+      <form class="form-card" id="form-dang-ky" method="POST">
+        <div class="form-head">
+          <h2>Đăng ký tư vấn &amp; giữ chỗ</h2>
+          <p>Để lại thông tin — trung tâm liên hệ trong 24 giờ, kiểm tra trình độ miễn phí.</p>
+        </div>
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+        <div class="form-row">
+          <div class="field">
+            <label for="hoten">Họ và tên phụ huynh / học viên <span class="req">*</span></label>
+            <input type="text" id="hoten" name="Họ và tên" required placeholder="Nguyễn Văn A">
+          </div>
+          <div class="field">
+            <label for="sdt">Số điện thoại <span class="req">*</span></label>
+            <input type="tel" id="sdt" name="Số điện thoại" required pattern="0[0-9]{9,10}" placeholder="09xx xxx xxx" title="Số điện thoại bắt đầu bằng 0, gồm 10-11 chữ số">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="email">Email (không bắt buộc)</label>
+            <input type="email" id="email" name="Email" placeholder="email@example.com">
+          </div>
+          <div class="field">
+            <label for="dotuoi">Độ tuổi học viên <span class="req">*</span></label>
+            <select id="dotuoi" name="Độ tuổi học viên" required>
+              <option value="" disabled selected>— Chọn độ tuổi —</option>
+              <option>Mẫu giáo (4 – 6 tuổi)</option>
+              <option>Thiếu nhi (6 – 11 tuổi)</option>
+              <option>Thiếu niên (11 – 15 tuổi)</option>
+              <option>Học sinh THPT / Sinh viên</option>
+              <option>Người lớn / Người đi làm</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="khoahoc">Khóa học quan tâm <span class="req">*</span></label>
+            <select id="khoahoc" name="Khóa học" required>
+              <option value="" disabled selected>— Chọn khóa học —</option>
+              <option>Anh văn mẫu giáo SmartKids (4-6 tuổi)</option>
+              <option>Anh văn thiếu nhi SuperKid (6-11 tuổi)</option>
+              <option>Tiếng Anh hè Super Summer</option>
+              <option>Anh ngữ thiếu niên Young Leaders (11-15 tuổi)</option>
+              <option>Tiếng Anh giao tiếp iTalk (người lớn)</option>
+              <option>Lớp cấp tốc cho người "mất gốc"</option>
+              <option>Luyện thi IELTS / TOEFL iBT</option>
+              <option>Tiếng Anh doanh nghiệp</option>
+              <option>Chưa rõ — cần tư vấn thêm</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="chinhanh">Chi nhánh gần bạn <span class="req">*</span></label>
+            <select id="chinhanh" name="Chi nhánh" required>
+              <option value="" disabled selected>— Chọn chi nhánh —</option>
+              <option>Phú Hoà Đông (Củ Chi)</option>
+              <option>Trụ sở chính — Bà Điểm, Hóc Môn</option>
+              <option>Nguyễn Thị Sóc — Bà Điểm, Hóc Môn</option>
+              <option>Vĩnh Tân (Tân Uyên, Bình Dương)</option>
+              <option>Phú Bưng — Phú Chánh (Bình Dương)</option>
+              <option>Bình Cơ (Bình Dương)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="ghichu">Ghi chú thêm</label>
+          <textarea id="ghichu" name="Ghi chú" placeholder="Ví dụ: bé đang học lớp 3, muốn học buổi tối thứ 2-4-6..."></textarea>
+        </div>
+
+        <button class="btn btn-lg" type="submit">Gửi đăng ký ngay 🎉</button>
+        <p class="form-note">Thông tin của bạn được bảo mật và chỉ dùng để tư vấn khóa học. Cần hỗ trợ gấp? Nhắn Zalo <a href="https://zalo.me/0869688153" target="_blank" rel="noopener" style="color:var(--red);font-weight:700;">Ms. Uyên — 0869 688 153</a>.</p>
+      </form>
     </div>
   </div>
 </div>
@@ -320,97 +419,6 @@
       </div>
     </div>
     <div class="more">Xem thêm video tại <a href="http://anhvietmy.com.vn/video.html" target="_blank" rel="noopener">thư viện video của trung tâm →</a></div>
-  </div>
-</section>
-
-<section class="register" id="dang-ky">
-  <div class="wrap">
-    <div class="sec-title">
-      <h2>Đăng ký tư vấn &amp; giữ chỗ</h2>
-      <div class="underline"></div>
-      <p>Điền thông tin bên dưới — trung tâm sẽ liên hệ trong vòng 24 giờ để tư vấn lộ trình và kiểm tra trình độ miễn phí.</p>
-    </div>
-
-    <!--
-      Form gửi ngầm vào Google Form (chỉ chạy nền — người đăng ký không thấy Google Form):
-      mỗi đăng ký thành một dòng trong Google Sheet của chủ trang.
-      Cấu hình endpoint + entry ID tại GFORM cuối trang.
-    -->
-    <div class="form-card" id="cam-on" style="display:none; text-align:center;">
-      <div style="font-size:48px; margin-bottom:12px;">🎉</div>
-      <h3 style="color:var(--red); font-size:22px; margin-bottom:10px;">Đăng ký thành công!</h3>
-      <p style="color:var(--gray);">Cảm ơn bạn đã tin tưởng Anh Việt Mỹ. Trung tâm sẽ liên hệ với bạn trong vòng 24 giờ.<br>Cần hỗ trợ ngay? Nhắn Zalo <a href="https://zalo.me/0869688153" target="_blank" rel="noopener" style="color:var(--red); font-weight:700;">Ms. Uyên</a>.</p>
-    </div>
-    <form class="form-card" id="form-dang-ky" method="POST">
-      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-
-      <div class="form-row">
-        <div class="field">
-          <label for="hoten">Họ và tên phụ huynh / học viên <span class="req">*</span></label>
-          <input type="text" id="hoten" name="Họ và tên" required placeholder="Nguyễn Văn A">
-        </div>
-        <div class="field">
-          <label for="sdt">Số điện thoại <span class="req">*</span></label>
-          <input type="tel" id="sdt" name="Số điện thoại" required pattern="0[0-9]{9,10}" placeholder="09xx xxx xxx" title="Số điện thoại bắt đầu bằng 0, gồm 10-11 chữ số">
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="field">
-          <label for="email">Email (không bắt buộc)</label>
-          <input type="email" id="email" name="Email" placeholder="email@example.com">
-        </div>
-        <div class="field">
-          <label for="dotuoi">Độ tuổi học viên <span class="req">*</span></label>
-          <select id="dotuoi" name="Độ tuổi học viên" required>
-            <option value="" disabled selected>— Chọn độ tuổi —</option>
-            <option>Mẫu giáo (4 – 6 tuổi)</option>
-            <option>Thiếu nhi (6 – 11 tuổi)</option>
-            <option>Thiếu niên (11 – 15 tuổi)</option>
-            <option>Học sinh THPT / Sinh viên</option>
-            <option>Người lớn / Người đi làm</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="field">
-          <label for="khoahoc">Khóa học quan tâm <span class="req">*</span></label>
-          <select id="khoahoc" name="Khóa học" required>
-            <option value="" disabled selected>— Chọn khóa học —</option>
-            <option>Anh văn mẫu giáo SmartKids (4-6 tuổi)</option>
-            <option>Anh văn thiếu nhi SuperKid (6-11 tuổi)</option>
-            <option>Tiếng Anh hè Super Summer</option>
-            <option>Anh ngữ thiếu niên Young Leaders (11-15 tuổi)</option>
-            <option>Tiếng Anh giao tiếp iTalk (người lớn)</option>
-            <option>Lớp cấp tốc cho người "mất gốc"</option>
-            <option>Luyện thi IELTS / TOEFL iBT</option>
-            <option>Tiếng Anh doanh nghiệp</option>
-            <option>Chưa rõ — cần tư vấn thêm</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="chinhanh">Chi nhánh gần bạn <span class="req">*</span></label>
-          <select id="chinhanh" name="Chi nhánh" required>
-            <option value="" disabled selected>— Chọn chi nhánh —</option>
-            <option>Phú Hoà Đông (Củ Chi)</option>
-            <option>Trụ sở chính — Bà Điểm, Hóc Môn</option>
-            <option>Nguyễn Thị Sóc — Bà Điểm, Hóc Môn</option>
-            <option>Vĩnh Tân (Tân Uyên, Bình Dương)</option>
-            <option>Phú Bưng — Phú Chánh (Bình Dương)</option>
-            <option>Bình Cơ (Bình Dương)</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="field">
-        <label for="ghichu">Ghi chú thêm</label>
-        <textarea id="ghichu" name="Ghi chú" placeholder="Ví dụ: bé đang học lớp 3, muốn học buổi tối thứ 2-4-6..."></textarea>
-      </div>
-
-      <button class="btn btn-lg" type="submit">Gửi đăng ký ngay 🎉</button>
-      <p class="form-note">Thông tin của bạn được bảo mật và chỉ dùng để tư vấn khóa học. Cần hỗ trợ gấp? Nhắn Zalo <a href="https://zalo.me/0869688153" target="_blank" rel="noopener" style="color:var(--red);font-weight:700;">Ms. Uyên — 0869 688 153</a>.</p>
-    </form>
   </div>
 </section>
 
